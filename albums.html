@@ -42,6 +42,12 @@ button { margin:5px; padding:6px 12px; cursor:pointer; border:none; border-radiu
 button:hover { opacity:0.9; }
 tr.dragging { opacity:0.4; background:#ffe; }
 tr.over { border-top:3px solid #0077cc; }
+
+tr[draggable="true"] {
+  -webkit-user-select: none;        /* Prevents text selection on long-press (iOS Safari) */
+  user-select: none;
+  touch-action: manipulation;       /* Improves touch responsiveness, reduces delay */
+}
 </style>
 </head>
 <body>
