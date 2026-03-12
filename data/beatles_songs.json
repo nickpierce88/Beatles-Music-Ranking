@@ -1,0 +1,328 @@
+{
+  "albums": [
+    {
+      "album_id": 1,
+      "album": "Please Please Me",
+      "year": 1963,
+      "songs": [
+        {"song_id":1,"title":"I Saw Her Standing There","track":1},
+        {"song_id":2,"title":"Misery","track":2},
+        {"song_id":3,"title":"Anna (Go to Him)","track":3},
+        {"song_id":4,"title":"Chains","track":4},
+        {"song_id":5,"title":"Boys","track":5},
+        {"song_id":6,"title":"Ask Me Why","track":6},
+        {"song_id":7,"title":"Please Please Me","track":7},
+        {"song_id":8,"title":"Love Me Do","track":8},
+        {"song_id":9,"title":"P.S. I Love You","track":9},
+        {"song_id":10,"title":"Baby It's You","track":10},
+        {"song_id":11,"title":"Do You Want to Know a Secret","track":11},
+        {"song_id":12,"title":"A Taste of Honey","track":12},
+        {"song_id":13,"title":"There's a Place","track":13},
+        {"song_id":14,"title":"Twist and Shout","track":14}
+      ]
+    },
+
+    {
+      "album_id": 2,
+      "album": "With The Beatles",
+      "year": 1963,
+      "songs": [
+        {"song_id":15,"title":"It Won't Be Long","track":1},
+        {"song_id":16,"title":"All I've Got to Do","track":2},
+        {"song_id":17,"title":"All My Loving","track":3},
+        {"song_id":18,"title":"Don't Bother Me","track":4},
+        {"song_id":19,"title":"Little Child","track":5},
+        {"song_id":20,"title":"Till There Was You","track":6},
+        {"song_id":21,"title":"Please Mister Postman","track":7},
+        {"song_id":22,"title":"Roll Over Beethoven","track":8},
+        {"song_id":23,"title":"Hold Me Tight","track":9},
+        {"song_id":24,"title":"You Really Got a Hold on Me","track":10},
+        {"song_id":25,"title":"I Wanna Be Your Man","track":11},
+        {"song_id":26,"title":"Devil in Her Heart","track":12},
+        {"song_id":27,"title":"Not a Second Time","track":13},
+        {"song_id":28,"title":"Money (That's What I Want)","track":14}
+      ]
+    },
+
+    {
+      "album_id": 3,
+      "album": "A Hard Day's Night",
+      "year": 1964,
+      "songs": [
+        {"song_id":29,"title":"A Hard Day's Night","track":1},
+        {"song_id":30,"title":"I Should Have Known Better","track":2},
+        {"song_id":31,"title":"If I Fell","track":3},
+        {"song_id":32,"title":"I'm Happy Just to Dance with You","track":4},
+        {"song_id":33,"title":"And I Love Her","track":5},
+        {"song_id":34,"title":"Tell Me Why","track":6},
+        {"song_id":35,"title":"Can't Buy Me Love","track":7},
+        {"song_id":36,"title":"Any Time at All","track":8},
+        {"song_id":37,"title":"I'll Cry Instead","track":9},
+        {"song_id":38,"title":"Things We Said Today","track":10},
+        {"song_id":39,"title":"When I Get Home","track":11},
+        {"song_id":40,"title":"You Can't Do That","track":12},
+        {"song_id":41,"title":"I'll Be Back","track":13}
+      ]
+    },
+
+    {
+      "album_id": 4,
+      "album": "Beatles for Sale",
+      "year": 1964,
+      "songs": [
+        {"song_id":42,"title":"No Reply","track":1},
+        {"song_id":43,"title":"I'm a Loser","track":2},
+        {"song_id":44,"title":"Baby's in Black","track":3},
+        {"song_id":45,"title":"Rock and Roll Music","track":4},
+        {"song_id":46,"title":"I'll Follow the Sun","track":5},
+        {"song_id":47,"title":"Mr. Moonlight","track":6},
+        {"song_id":48,"title":"Kansas City / Hey-Hey-Hey-Hey!","track":7},
+        {"song_id":49,"title":"Eight Days a Week","track":8},
+        {"song_id":50,"title":"Words of Love","track":9},
+        {"song_id":51,"title":"Honey Don't","track":10},
+        {"song_id":52,"title":"Every Little Thing","track":11},
+        {"song_id":53,"title":"I Don't Want to Spoil the Party","track":12},
+        {"song_id":54,"title":"What You're Doing","track":13},
+        {"song_id":55,"title":"Everybody's Trying to Be My Baby","track":14}
+      ]
+    },
+
+    {
+      "album_id": 5,
+      "album": "Help!",
+      "year": 1965,
+      "songs": [
+        {"song_id":56,"title":"Help!","track":1},
+        {"song_id":57,"title":"The Night Before","track":2},
+        {"song_id":58,"title":"You've Got to Hide Your Love Away","track":3},
+        {"song_id":59,"title":"I Need You","track":4},
+        {"song_id":60,"title":"Another Girl","track":5},
+        {"song_id":61,"title":"You're Going to Lose That Girl","track":6},
+        {"song_id":62,"title":"Ticket to Ride","track":7},
+        {"song_id":63,"title":"Act Naturally","track":8},
+        {"song_id":64,"title":"It's Only Love","track":9},
+        {"song_id":65,"title":"You Like Me Too Much","track":10},
+        {"song_id":66,"title":"Tell Me What You See","track":11},
+        {"song_id":67,"title":"I've Just Seen a Face","track":12},
+        {"song_id":68,"title":"Yesterday","track":13},
+        {"song_id":69,"title":"Dizzy Miss Lizzy","track":14}
+      ]
+    },
+
+    {
+      "album_id": 6,
+      "album": "Rubber Soul",
+      "year": 1965,
+      "songs": [
+        {"song_id":70,"title":"Drive My Car","track":1},
+        {"song_id":71,"title":"Norwegian Wood (This Bird Has Flown)","track":2},
+        {"song_id":72,"title":"You Won't See Me","track":3},
+        {"song_id":73,"title":"Nowhere Man","track":4},
+        {"song_id":74,"title":"Think for Yourself","track":5},
+        {"song_id":75,"title":"The Word","track":6},
+        {"song_id":76,"title":"Michelle","track":7},
+        {"song_id":77,"title":"What Goes On","track":8},
+        {"song_id":78,"title":"Girl","track":9},
+        {"song_id":79,"title":"I'm Looking Through You","track":10},
+        {"song_id":80,"title":"In My Life","track":11},
+        {"song_id":81,"title":"Wait","track":12},
+        {"song_id":82,"title":"If I Needed Someone","track":13},
+        {"song_id":83,"title":"Run for Your Life","track":14}
+      ]
+    },
+
+    {
+      "album_id": 7,
+      "album": "Revolver",
+      "year": 1966,
+      "songs": [
+        {"song_id":84,"title":"Taxman","track":1},
+        {"song_id":85,"title":"Eleanor Rigby","track":2},
+        {"song_id":86,"title":"I'm Only Sleeping","track":3},
+        {"song_id":87,"title":"Love You To","track":4},
+        {"song_id":88,"title":"Here, There and Everywhere","track":5},
+        {"song_id":89,"title":"Yellow Submarine","track":6},
+        {"song_id":90,"title":"She Said She Said","track":7},
+        {"song_id":91,"title":"Good Day Sunshine","track":8},
+        {"song_id":92,"title":"And Your Bird Can Sing","track":9},
+        {"song_id":93,"title":"For No One","track":10},
+        {"song_id":94,"title":"Doctor Robert","track":11},
+        {"song_id":95,"title":"I Want to Tell You","track":12},
+        {"song_id":96,"title":"Got to Get You into My Life","track":13},
+        {"song_id":97,"title":"Tomorrow Never Knows","track":14}
+      ]
+    },
+
+    {
+      "album_id": 8,
+      "album": "Sgt. Pepper's Lonely Hearts Club Band",
+      "year": 1967,
+      "songs": [
+        {"song_id":98,"title":"Sgt. Pepper's Lonely Hearts Club Band","track":1},
+        {"song_id":99,"title":"With a Little Help from My Friends","track":2},
+        {"song_id":100,"title":"Lucy in the Sky with Diamonds","track":3},
+        {"song_id":101,"title":"Getting Better","track":4},
+        {"song_id":102,"title":"Fixing a Hole","track":5},
+        {"song_id":103,"title":"She's Leaving Home","track":6},
+        {"song_id":104,"title":"Being for the Benefit of Mr. Kite!","track":7},
+        {"song_id":105,"title":"Within You Without You","track":8},
+        {"song_id":106,"title":"When I'm Sixty-Four","track":9},
+        {"song_id":107,"title":"Lovely Rita","track":10},
+        {"song_id":108,"title":"Good Morning Good Morning","track":11},
+        {"song_id":109,"title":"Sgt. Pepper's Lonely Hearts Club Band (Reprise)","track":12},
+        {"song_id":110,"title":"A Day in the Life","track":13}
+      ]
+    },
+
+    {
+      "album_id": 9,
+      "album": "Magical Mystery Tour",
+      "year": 1967,
+      "songs": [
+        {"song_id":111,"title":"Magical Mystery Tour","track":1},
+        {"song_id":112,"title":"The Fool on the Hill","track":2},
+        {"song_id":113,"title":"Flying","track":3},
+        {"song_id":114,"title":"Blue Jay Way","track":4},
+        {"song_id":115,"title":"Your Mother Should Know","track":5},
+        {"song_id":116,"title":"I Am the Walrus","track":6},
+        {"song_id":117,"title":"Hello, Goodbye","track":7},
+        {"song_id":118,"title":"Strawberry Fields Forever","track":8},
+        {"song_id":119,"title":"Penny Lane","track":9},
+        {"song_id":120,"title":"Baby, You're a Rich Man","track":10},
+        {"song_id":121,"title":"All You Need Is Love","track":11}
+      ]
+    },
+
+    {
+      "album_id": 10,
+      "album": "The Beatles",
+      "year": 1968,
+      "songs": [
+        {"song_id":122,"title":"Back in the U.S.S.R.","track":1},
+        {"song_id":123,"title":"Dear Prudence","track":2},
+        {"song_id":124,"title":"Glass Onion","track":3},
+        {"song_id":125,"title":"Ob-La-Di, Ob-La-Da","track":4},
+        {"song_id":126,"title":"Wild Honey Pie","track":5},
+        {"song_id":127,"title":"The Continuing Story of Bungalow Bill","track":6},
+        {"song_id":128,"title":"While My Guitar Gently Weeps","track":7},
+        {"song_id":129,"title":"Happiness Is a Warm Gun","track":8},
+        {"song_id":130,"title":"Martha My Dear","track":9},
+        {"song_id":131,"title":"I'm So Tired","track":10},
+        {"song_id":132,"title":"Blackbird","track":11},
+        {"song_id":133,"title":"Piggies","track":12},
+        {"song_id":134,"title":"Rocky Raccoon","track":13},
+        {"song_id":135,"title":"Don't Pass Me By","track":14},
+        {"song_id":136,"title":"Why Don't We Do It in the Road?","track":15},
+        {"song_id":137,"title":"I Will","track":16},
+        {"song_id":138,"title":"Julia","track":17},
+        {"song_id":139,"title":"Birthday","track":18},
+        {"song_id":140,"title":"Yer Blues","track":19},
+        {"song_id":141,"title":"Mother Nature's Son","track":20},
+        {"song_id":142,"title":"Everybody's Got Something to Hide Except Me and My Monkey","track":21},
+        {"song_id":143,"title":"Sexy Sadie","track":22},
+        {"song_id":144,"title":"Helter Skelter","track":23},
+        {"song_id":145,"title":"Long, Long, Long","track":24},
+        {"song_id":146,"title":"Revolution 1","track":25},
+        {"song_id":147,"title":"Honey Pie","track":26},
+        {"song_id":148,"title":"Savoy Truffle","track":27},
+        {"song_id":149,"title":"Cry Baby Cry","track":28},
+        {"song_id":150,"title":"Revolution 9","track":29},
+        {"song_id":151,"title":"Good Night","track":30}
+      ]
+    },
+
+    {
+      "album_id": 11,
+      "album": "Yellow Submarine",
+      "year": 1969,
+      "songs": [
+        {"song_id":152,"title":"Yellow Submarine","track":1},
+        {"song_id":153,"title":"Only a Northern Song","track":2},
+        {"song_id":154,"title":"All Together Now","track":3},
+        {"song_id":155,"title":"Hey Bulldog","track":4},
+        {"song_id":156,"title":"It's All Too Much","track":5},
+        {"song_id":157,"title":"All You Need Is Love","track":6}
+      ]
+    },
+
+    {
+      "album_id": 12,
+      "album": "Abbey Road",
+      "year": 1969,
+      "songs": [
+        {"song_id":158,"title":"Come Together","track":1},
+        {"song_id":159,"title":"Something","track":2},
+        {"song_id":160,"title":"Maxwell's Silver Hammer","track":3},
+        {"song_id":161,"title":"Oh! Darling","track":4},
+        {"song_id":162,"title":"Octopus's Garden","track":5},
+        {"song_id":163,"title":"I Want You (She's So Heavy)","track":6},
+        {"song_id":164,"title":"Here Comes the Sun","track":7},
+        {"song_id":165,"title":"Because","track":8},
+        {"song_id":166,"title":"You Never Give Me Your Money","track":9},
+        {"song_id":167,"title":"Sun King","track":10},
+        {"song_id":168,"title":"Mean Mr. Mustard","track":11},
+        {"song_id":169,"title":"Polythene Pam","track":12},
+        {"song_id":170,"title":"She Came In Through the Bathroom Window","track":13},
+        {"song_id":171,"title":"Golden Slumbers","track":14},
+        {"song_id":172,"title":"Carry That Weight","track":15},
+        {"song_id":173,"title":"The End","track":16},
+        {"song_id":174,"title":"Her Majesty","track":17}
+      ]
+    },
+
+    {
+      "album_id": 13,
+      "album": "Let It Be",
+      "year": 1970,
+      "songs": [
+        {"song_id":175,"title":"Two of Us","track":1},
+        {"song_id":176,"title":"Dig a Pony","track":2},
+        {"song_id":177,"title":"Across the Universe","track":3},
+        {"song_id":178,"title":"I Me Mine","track":4},
+        {"song_id":179,"title":"Dig It","track":5},
+        {"song_id":180,"title":"Let It Be","track":6},
+        {"song_id":181,"title":"Maggie Mae","track":7},
+        {"song_id":182,"title":"I've Got a Feeling","track":8},
+        {"song_id":183,"title":"One After 909","track":9},
+        {"song_id":184,"title":"The Long and Winding Road","track":10},
+        {"song_id":185,"title":"For You Blue","track":11},
+        {"song_id":186,"title":"Get Back","track":12}
+      ]
+    },
+
+    {
+      "album_id": 14,
+      "album": "Past Masters",
+      "year": 1988,
+      "songs": [
+        {"song_id":187,"title":"Love Me Do (Single Version)","track":1},
+        {"song_id":188,"title":"From Me to You","track":2},
+        {"song_id":189,"title":"Thank You Girl","track":3},
+        {"song_id":190,"title":"She Loves You","track":4},
+        {"song_id":191,"title":"I'll Get You","track":5},
+        {"song_id":192,"title":"I Want to Hold Your Hand","track":6},
+        {"song_id":193,"title":"This Boy","track":7},
+        {"song_id":194,"title":"Komm, Gib Mir Deine Hand","track":8},
+        {"song_id":195,"title":"Sie Liebt Dich","track":9},
+        {"song_id":196,"title":"Long Tall Sally","track":10},
+        {"song_id":197,"title":"I Call Your Name","track":11},
+        {"song_id":198,"title":"Slow Down","track":12},
+        {"song_id":199,"title":"Matchbox","track":13},
+        {"song_id":200,"title":"I Feel Fine","track":14},
+        {"song_id":201,"title":"She's a Woman","track":15},
+        {"song_id":202,"title":"Bad Boy","track":16},
+        {"song_id":203,"title":"Yes It Is","track":17},
+        {"song_id":204,"title":"I'm Down","track":18},
+        {"song_id":205,"title":"Day Tripper","track":19},
+        {"song_id":206,"title":"We Can Work It Out","track":20},
+        {"song_id":207,"title":"Paperback Writer","track":21},
+        {"song_id":208,"title":"Rain","track":22},
+        {"song_id":209,"title":"Lady Madonna","track":23},
+        {"song_id":210,"title":"The Inner Light","track":24},
+        {"song_id":211,"title":"Hey Jude","track":25},
+        {"song_id":212,"title":"Revolution","track":26},
+        {"song_id":213,"title":"Don't Let Me Down","track":27}
+      ]
+    }
+  ]
+}
