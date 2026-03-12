@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beatles Album Rankings</title>
+<style>
+body { font-family: Arial, sans-serif; background:#f4f4f4; padding:20px; margin:0; }
+h1 { text-align:center; color:#333; }
+.album { background:white; margin:15px auto; max-width:900px; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.12); overflow:hidden; }
+.album-header { padding:14px 18px; cursor:pointer; font-weight:bold; background:#e0e0e0; font-size:1.2em; transition:background 0.2s; display:flex; justify-content:space-between; align-items:center; }
+.album-header:hover { background:#d0d0d0; }
+.avg-rating { font-size:0.9em; color:#555; font-weight:normal; }
+.songs { display:none; padding:15px 20px; background:#fafafa; }
+.controls { text-align:center; margin-bottom:8px; }
+.status-container {
+  height: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  transition: height 0.4s ease-out, margin 0.4s ease-out;
+}
+.status-message {
+  font-size: 0.85em;
+  color: #555;
+  text-align: center;
+  line-height: 1.3;
+  padding: 4px 0;
+}
+.status-message.success { color: #155724; }
+.status-message.info    { color: #6c757d; }
+table { width:100%; border-collapse:collapse; margin-top:10px; }
+th, td { padding:10px; border-bottom:1px solid #ddd; text-align:left; }
+th { background:#0077cc; color:white; cursor:pointer; user-select:none; }
+th:hover { background:#0066b3; }
+.current-rank-cell { font-weight:bold; color:#0077cc; width:80px; text-align:center; cursor:grab; }
+.saved-rank-cell { width:80px; text-align:center; font-weight:bold; color:#555; background:#f8f9fa; }
+input { width:70px; padding:4px; border:1px solid #ccc; border-radius:4px; text-align:center; }
+input:focus { outline:none; box-shadow:0 0 0 2px #0077cc; border-color:#0077cc; }
+button { margin:5px; padding:6px 12px; cursor:pointer; border:none; border-radius:4px; font-weight:bold; }
+.save-btn { background:#28a745; color:white; }
+.restore-btn { background:#007bff; color:white; }
+.export-btn { background:#17a2b8; color:white; }
+button:hover { opacity:0.9; }
+tr.dragging { opacity:0.4; background:#ffe; }
+tr.over { border-top:3px solid #0077cc; }
+</style>
+</head>
+<body>
+<h1>Beatles Album Rankings</h1>
+<div id="albumsContainer"></div>
+
+<script>
+let albumRatings = JSON.parse(localStorage.getItem("albumRatings")) || {};
+let albumRankings = JSON.parse(localStorage.getItem("albumRankings")) || {};
+
+// Guard against corrupted data
+if (typeof albumRatings !== 'object' || albumRatings === null) albumRatings = {};
+Object.keys(albumRatings).forEach(key => {
+  if (typeof albumRatings[key] !== 'object' || albumRatings[key] === null) albumRatings[key] = {};
+});
+if (typeof albumRankings !== 'object' || albumRankings === null) albumRankings = {};
+
+function showStatus(parentElement, message, type = 'success') {
+  const container = parentElement.querySelector('.status-container');
+  if (!container) return;
+
+  const statusDiv = document.createElement("div");
+  statusDiv.className = `status-message ${type}`;
+  statusDiv.textContent = message;
+
+  container.innerHTML = '';
+  container.appendChild(statusDiv);
+
+  container.offsetHeight;
+  container.style.height = `${statusDiv.offsetHeight}px`;
+  container.style.margin = '6px 0';
+
+  setTimeout(() => {
+    container.style.height = '0px';
+    container.style.margin = '0 auto';
+    setTimeout(() => container.innerHTML = '', 500);
+  }, 2800);
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showStatus(document.querySelector('.controls').parentElement, "Copied to clipboard!", "success");
+  }).catch(err => {
+    showStatus(document.querySelector('.controls').parentElement, "Failed to copy", "info");
+    console.error("Clipboard error:", err);
+  });
+}
+
+fetch("data/beatles_songs.json")
+  .then(res => {
+    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    return res.json();
+  })
+  .then(data => {
+    const albums = data.albums;
+    albums.sort((a, b) => a.year - b.year);
+
+    const container = document.getElementById("albumsContainer");
+
+    albums.forEach(album => {
+      const albumId = String(album.album_id);
+      const albumTitle = `${album.album} (${album.year})`;
+
+      if (!albumRatings[albumId]) albumRatings[albumId] = {};
+      album.songs.forEach(song => {
+        if (!(song.song_id in albumRatings[albumId])) albumRatings[albumId][song.song_id] = "";
+      });
+
+      const albumDiv = document.createElement("div");
+      albumDiv.className = "album";
+
+      const header = document.createElement("div");
+      header.className = "album-header";
+      const avgSpan = document.createElement("span");
+      avgSpan.className = "avg-rating";
+      header.appendChild(document.createTextNode(`${albumTitle} `));
+      header.appendChild(avgSpan);
+
+      const songsDiv = document.createElement("div");
+      songsDiv.className = "songs";
+
+      const controlsDiv = document.createElement("div");
+      controlsDiv.className = "controls";
+
+      const saveBtn = document.createElement("button");
+      saveBtn.textContent = "Save Ranking";
+      saveBtn.className = "save-btn";
+
+      const restoreBtn = document.createElement("button");
+      restoreBtn.textContent = "Restore Ranking";
+      restoreBtn.className = "restore-btn";
+
+      const exportBtn = document.createElement("button");
+      exportBtn.textContent = "Export Ranking";
+      exportBtn.className = "export-btn";
+
+      controlsDiv.append(saveBtn, restoreBtn, exportBtn);
+
+      const statusContainer = document.createElement("div");
+      statusContainer.className = "status-container";
+
+      songsDiv.append(controlsDiv, statusContainer);
+
+      const table = document.createElement("table");
+      table.innerHTML = `<thead>
+        <tr>
+          <th title="Number" data-sort="track">No.</th>
+          <th>Current Rank</th>
+          <th data-sort="title">Song</th>
+          <th data-sort="savedRank">Rank</th>
+          <th data-sort="rating">Rating</th>
+        </tr>
+      </thead>`;
+      const tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+      songsDiv.appendChild(table);
+
+      let songsCopy = [...album.songs];
+
+      let savedRanking = albumRankings[albumId];
+      if (savedRanking) {
+        Object.assign(albumRatings[albumId], savedRanking.ratings);
+      }
+
+      function getSavedRankValue(song) {
+        if (!savedRanking) return Infinity;
+        const pos = savedRanking.order.indexOf(song.song_id);
+        return pos === -1 ? Infinity : pos + 1;
+      }
+
+      function getSavedRank(song) {
+        const val = getSavedRankValue(song);
+        return val === Infinity ? "—" : val;
+      }
+
+      function updateAvg() {
+        const ratings = Object.values(albumRatings[albumId]).filter(v => v !== "" && !isNaN(parseFloat(v)));
+        const avg = ratings.length ? (ratings.reduce((a,b)=>a+parseFloat(b),0) / ratings.length).toFixed(1) : "—";
+        avgSpan.textContent = `Avg: ${avg}`;
+      }
+
+      function renderRows(songs) {
+        tbody.innerHTML = "";
+
+        songs.forEach((song, index) => {
+          const row = document.createElement("tr");
+          row.draggable = true;
+          row.innerHTML = `
+            <td>${song.track}</td>
+            <td class="current-rank-cell">${index + 1}</td>
+            <td>${song.title}</td>
+            <td class="saved-rank-cell">${getSavedRank(song)}</td>
+            <td><input type="number" step="0.01" min="0" max="10" value="${albumRatings[albumId][song.song_id] || ""}" data-song-id="${song.song_id}"></td>
+          `;
+
+          const input = row.querySelector("input");
+          input.addEventListener("input", () => {
+            albumRatings[albumId][song.song_id] = input.value;
+            localStorage.setItem("albumRatings", JSON.stringify(albumRatings));
+            updateAvg();
+          });
+
+          row.addEventListener("dragstart", (e) => {
+            row.classList.add("dragging");
+            e.dataTransfer.setData("text/plain", index);
+          });
+
+          row.addEventListener("dragend", () => row.classList.remove("dragging"));
+
+          row.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            row.classList.add("over");
+          });
+
+          row.addEventListener("dragleave", () => row.classList.remove("over"));
+
+          row.addEventListener("drop", (e) => {
+            e.preventDefault();
+            row.classList.remove("over");
+            const fromIndex = parseInt(e.dataTransfer.getData("text/plain"));
+            const toIndex = Array.from(tbody.children).indexOf(row);
+            if (fromIndex !== toIndex) {
+              const [movedSong] = songsCopy.splice(fromIndex, 1);
+              songsCopy.splice(toIndex, 0, movedSong);
+              renderRows(songsCopy);
+            }
+          });
+
+          tbody.appendChild(row);
+        });
+
+        updateAvg();
+      }
+
+      renderRows(songsCopy);
+
+      table.querySelectorAll("th[data-sort]").forEach(th => {
+        th.addEventListener("click", () => {
+          const sortType = th.dataset.sort;
+
+          if (sortType === "track") {
+            songsCopy.sort((a,b) => a.track - b.track);
+          } else if (sortType === "title") {
+            songsCopy.sort((a,b) => a.title.localeCompare(b.title));
+          } else if (sortType === "rating") {
+            songsCopy.sort((a,b) => {
+              const ra = parseFloat(albumRatings[albumId][a.song_id]) || 0;
+              const rb = parseFloat(albumRatings[albumId][b.song_id]) || 0;
+              return rb - ra;
+            });
+          } else if (sortType === "savedRank") {
+            songsCopy.sort((a,b) => {
+              const va = getSavedRankValue(a);
+              const vb = getSavedRankValue(b);
+              return va - vb;
+            });
+          }
+
+          renderRows(songsCopy);
+        });
+      });
+
+      saveBtn.addEventListener("click", () => {
+        albumRankings[albumId] = {
+          ratings: { ...albumRatings[albumId] },
+          order: songsCopy.map(s => s.song_id)
+        };
+        localStorage.setItem("albumRankings", JSON.stringify(albumRankings));
+        savedRanking = albumRankings[albumId];
+        renderRows(songsCopy);
+        showStatus(controlsDiv.parentElement, "Ranking saved successfully", "success");
+      });
+
+      restoreBtn.addEventListener("click", () => {
+        if (albumRankings[albumId]) {
+          const ranking = albumRankings[albumId];
+          Object.assign(albumRatings[albumId], ranking.ratings);
+          songsCopy = [...album.songs];
+          songsCopy.sort((a, b) => ranking.order.indexOf(a.song_id) - ranking.order.indexOf(b.song_id));
+          localStorage.setItem("albumRatings", JSON.stringify(albumRatings));
+          savedRanking = ranking;
+          renderRows(songsCopy);
+          showStatus(controlsDiv.parentElement, "Ranking restored", "success");
+        } else {
+          showStatus(controlsDiv.parentElement, "No saved ranking found", "info");
+        }
+      });
+
+      exportBtn.addEventListener("click", () => {
+        const rankingText = `${albumTitle}\n\n` + 
+          songsCopy
+            .map((song, index) => `${index + 1}. ${song.title}`)
+            .join("\n");
+
+        copyToClipboard(rankingText);
+      });
+
+      header.addEventListener("click", () => {
+        songsDiv.style.display = songsDiv.style.display === "block" ? "none" : "block";
+      });
+
+      albumDiv.append(header, songsDiv);
+      container.appendChild(albumDiv);
+    });
+  })
+  .catch(err => {
+    console.error("Error:", err);
+    document.getElementById("albumsContainer").innerHTML = 
+      `<p style="color:red; text-align:center; font-size:1.2em;">
+        Failed to load album data.<br>${err.message}<br>Check file path and validity.
+      </p>`;
+  });
+</script>
+</body>
+</html>
